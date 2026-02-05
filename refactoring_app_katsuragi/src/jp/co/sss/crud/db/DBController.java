@@ -11,6 +11,7 @@ import java.sql.Types;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantSQL;
 
 /**
@@ -30,7 +31,7 @@ public class DBController {
 	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 */
-	public static void find() throws ClassNotFoundException, SQLException {
+	public static void findAll() throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -58,15 +59,15 @@ public class DBController {
 				System.out.print(resultSet.getString("emp_name") + "\t");
 
 				int gender = Integer.parseInt(resultSet.getString("gender"));
-				if (gender == 0) {
+				if (gender == ConstantMsg.GENDER_OTHER) {
 					System.out.print("回答なし" + "\t");
-				} else if (gender == 1) {
+				} else if (gender == ConstantMsg.GENDER_MALE) {
 					System.out.print("男性" + "\t");
 
-				} else if (gender == 2) {
+				} else if (gender == ConstantMsg.GENDER_FEMALE) {
 					System.out.print("女性" + "\t");
 
-				} else if (gender == 9) {
+				} else if (gender == ConstantMsg.GENDER_UNKNOWN) {
 					System.out.print("その他" + "\t");
 
 				}
@@ -93,7 +94,7 @@ public class DBController {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public static void findB() throws ClassNotFoundException, SQLException, IOException {
+	public static void findByEmpName() throws ClassNotFoundException, SQLException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		// 検索ワード
@@ -134,15 +135,15 @@ public class DBController {
 
 				String genderString = resultSet.getString("gender");
 				int gender = Integer.parseInt(genderString);
-				if (gender == 0) {
+				if (gender == ConstantMsg.GENDER_OTHER) {
 					System.out.print("回答なし");
-				} else if (gender == 1) {
+				} else if (gender == ConstantMsg.GENDER_MALE) {
 					System.out.print("男性");
 
-				} else if (gender == 2) {
+				} else if (gender == ConstantMsg.GENDER_FEMALE) {
 					System.out.print("女性");
 
-				} else if (gender == 9) {
+				} else if (gender == ConstantMsg.GENDER_UNKNOWN) {
 					System.out.print("その他");
 
 				}
@@ -173,7 +174,7 @@ public class DBController {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public static void findC(String deptId) throws ClassNotFoundException, SQLException, IOException {
+	public static void findByDeptId(String deptId) throws ClassNotFoundException, SQLException, IOException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -211,15 +212,15 @@ public class DBController {
 
 				String genderString = resultSet.getString("gender");
 				int gender = Integer.parseInt(genderString);
-				if (gender == 0) {
+				if (gender == ConstantMsg.GENDER_OTHER) {
 					System.out.print("回答なし");
-				} else if (gender == 1) {
+				} else if (gender == ConstantMsg.GENDER_MALE) {
 					System.out.print("男性");
 
-				} else if (gender == 2) {
+				} else if (gender == ConstantMsg.GENDER_FEMALE) {
 					System.out.print("女性");
 
-				} else if (gender == 9) {
+				} else if (gender == ConstantMsg.GENDER_UNKNOWN) {
 					System.out.print("その他");
 
 				}
@@ -230,11 +231,11 @@ public class DBController {
 
 				String deptIdString = resultSet.getString("dept_id");
 				int deptId2 = Integer.parseInt(deptIdString);
-				if (deptId2 == 1) {
+				if (deptId2 == ConstantMsg.DEPT_SALES) {
 					System.out.println("営業部");
-				} else if (deptId2 == 2) {
+				} else if (deptId2 == ConstantMsg.DEPT_ACCOUNTING) {
 					System.out.println("経理部");
-				} else if (gender == 3) {
+				} else if (gender == ConstantMsg.DEPT_GENERAL_AFFAIRS) {
 					System.out.println("総務部");
 
 				}
