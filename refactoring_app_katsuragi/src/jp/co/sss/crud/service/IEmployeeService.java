@@ -1,7 +1,5 @@
 package jp.co.sss.crud.service;
 
-import static jp.co.sss.crud.util.ConstantValue.*;
-
 import jp.co.sss.crud.exception.IllegalInputException;
 import jp.co.sss.crud.exception.SystemErrorException;
 
