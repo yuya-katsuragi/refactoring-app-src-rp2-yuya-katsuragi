@@ -48,31 +48,38 @@ public class DBController {
 
 			//resultSetの結果Setがない場合はfalse
 			if (!resultSet.isBeforeFirst()) {
-				System.out.println("該当者はいませんでした");
+				System.out.println(ConstantMsg.MSG_NOT_FOUND);
 				return;
 			}
 
 			// レコードを出力
-			System.out.println("社員ID\t社員名\t性別\t生年月日\t部署名");
+			System.out.println(ConstantMsg.MSG_INFO_LIST);
 			while (resultSet.next()) {
-				System.out.print(resultSet.getString("emp_id") + "\t");
-				System.out.print(resultSet.getString("emp_name") + "\t");
+				System.out.print(resultSet.getString("emp_id") +
+						ConstantMsg.HORIZONTAL_TAB);
+				System.out.print(resultSet.getString("emp_name") +
+						ConstantMsg.HORIZONTAL_TAB);
 
 				int gender = Integer.parseInt(resultSet.getString("gender"));
 				if (gender == ConstantMsg.GENDER_OTHER) {
-					System.out.print("回答なし" + "\t");
+					System.out.print(ConstantMsg.MSG_NO_ANSWER +
+							ConstantMsg.HORIZONTAL_TAB);
 				} else if (gender == ConstantMsg.GENDER_MALE) {
-					System.out.print("男性" + "\t");
+					System.out.print(ConstantMsg.MSG_MALE +
+							ConstantMsg.HORIZONTAL_TAB);
 
 				} else if (gender == ConstantMsg.GENDER_FEMALE) {
-					System.out.print("女性" + "\t");
+					System.out.print(ConstantMsg.MSG_FAMALE +
+							ConstantMsg.HORIZONTAL_TAB);
 
 				} else if (gender == ConstantMsg.GENDER_UNKNOWN) {
-					System.out.print("その他" + "\t");
+					System.out.print(ConstantMsg.MSG_OTHER +
+							ConstantMsg.HORIZONTAL_TAB);
 
 				}
 
-				System.out.print(resultSet.getString("birthday") + "\t");
+				System.out.print(resultSet.getString("birthday") +
+						ConstantMsg.HORIZONTAL_TAB);
 				System.out.println(resultSet.getString("dept_name"));
 			}
 
@@ -121,41 +128,41 @@ public class DBController {
 			// SQL文を実行
 			resultSet = preparedStatement.executeQuery();
 			if (!resultSet.isBeforeFirst()) {
-				System.out.println("該当者はいませんでした");
+				System.out.println(ConstantMsg.MSG_NOT_FOUND);
 				return;
 			}
 
-			System.out.println("社員ID\t社員名\t性別\t生年月日\t部署名");
+			System.out.println(ConstantMsg.MSG_INFO_LIST);
 			while (resultSet.next()) {
 				System.out.print(resultSet.getString("emp_id"));
-				System.out.print("\t");
+				System.out.print(ConstantMsg.HORIZONTAL_TAB);
 
 				System.out.print(resultSet.getString("emp_name"));
-				System.out.print("\t");
+				System.out.print(ConstantMsg.HORIZONTAL_TAB);
 
 				String genderString = resultSet.getString("gender");
 				int gender = Integer.parseInt(genderString);
 				if (gender == ConstantMsg.GENDER_OTHER) {
-					System.out.print("回答なし");
+					System.out.print(ConstantMsg.MSG_NO_ANSWER);
 				} else if (gender == ConstantMsg.GENDER_MALE) {
-					System.out.print("男性");
+					System.out.print(ConstantMsg.MSG_MALE);
 
 				} else if (gender == ConstantMsg.GENDER_FEMALE) {
-					System.out.print("女性");
+					System.out.print(ConstantMsg.MSG_FAMALE);
 
 				} else if (gender == ConstantMsg.GENDER_UNKNOWN) {
-					System.out.print("その他");
+					System.out.print(ConstantMsg.MSG_OTHER);
 
 				}
 
-				System.out.print("\t");
+				System.out.print(ConstantMsg.HORIZONTAL_TAB);
 				System.out.print(resultSet.getString("birthday"));
-				System.out.print("\t");
+				System.out.print(ConstantMsg.HORIZONTAL_TAB);
 
 				System.out.println(resultSet.getString("dept_name"));
 			}
 
-			System.out.println("");
+			System.out.println(ConstantMsg.EMPTY_LINE);
 
 		} finally {
 			// クローズ処理
@@ -198,50 +205,51 @@ public class DBController {
 			resultSet = preparedStatement.executeQuery();
 
 			if (!resultSet.isBeforeFirst()) {
-				System.out.println("該当者はいませんでした");
+				System.out.println(ConstantMsg.MSG_NOT_FOUND);
 				return;
 			}
 
-			System.out.println("社員ID\t社員名\t性別\t生年月日\t部署名");
+			System.out.println(ConstantMsg.MSG_INFO_LIST);
 			while (resultSet.next()) {
 				System.out.print(resultSet.getString("emp_id"));
-				System.out.print("\t");
+				System.out.print(ConstantMsg.HORIZONTAL_TAB);
 
 				System.out.print(resultSet.getString("emp_name"));
-				System.out.print("\t");
+				System.out.print(ConstantMsg.HORIZONTAL_TAB);
 
 				String genderString = resultSet.getString("gender");
 				int gender = Integer.parseInt(genderString);
 				if (gender == ConstantMsg.GENDER_OTHER) {
-					System.out.print("回答なし");
+					System.out.print(ConstantMsg.MSG_NO_ANSWER);
 				} else if (gender == ConstantMsg.GENDER_MALE) {
-					System.out.print("男性");
+					System.out.print(ConstantMsg.MSG_MALE);
 
 				} else if (gender == ConstantMsg.GENDER_FEMALE) {
-					System.out.print("女性");
+					System.out.print(ConstantMsg.MSG_FAMALE);
 
 				} else if (gender == ConstantMsg.GENDER_UNKNOWN) {
-					System.out.print("その他");
+					System.out.print(ConstantMsg.MSG_OTHER);
 
 				}
 
-				System.out.print("\t");
+				System.out.print(ConstantMsg.HORIZONTAL_TAB);
 				System.out.print(resultSet.getString("birthday"));
-				System.out.print("\t");
+				System.out.print(ConstantMsg.HORIZONTAL_TAB);
 
 				String deptIdString = resultSet.getString("dept_id");
-				int deptId2 = Integer.parseInt(deptIdString);
-				if (deptId2 == ConstantMsg.DEPT_SALES) {
-					System.out.println("営業部");
-				} else if (deptId2 == ConstantMsg.DEPT_ACCOUNTING) {
-					System.out.println("経理部");
-				} else if (gender == ConstantMsg.DEPT_GENERAL_AFFAIRS) {
-					System.out.println("総務部");
+				int deptIdInt = Integer.parseInt(deptIdString);
+				if (deptIdInt == ConstantMsg.DEPT_SALES) {
+					System.out.println(ConstantMsg.MSG_DEPT_SALES);
+				} else if (deptIdInt == ConstantMsg.DEPT_ACCOUNTING) {
+					System.out.println(ConstantMsg.MSG_DEPT_ACCOUNTING);
+				} else if (deptIdInt == ConstantMsg.DEPT_GENERAL_AFFAIRS) {
+					System.out.println(
+							ConstantMsg.MSG_DEPT_GENERAL_AFFAIRS);
 
 				}
 			}
 
-			System.out.println("");
+			System.out.println(ConstantMsg.EMPTY_LINE);
 		} finally {
 			// クローズ処理
 			DBManager.close(resultSet);
@@ -278,7 +286,8 @@ public class DBController {
 			// 入力値をバインド
 			preparedStatement.setString(1, empName);
 			preparedStatement.setInt(2, Integer.parseInt(gender));
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			SimpleDateFormat sdf = new SimpleDateFormat(
+					ConstantMsg.FORMAT_DATE);
 			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
 			preparedStatement.setInt(4, Integer.parseInt(deptId));
 
@@ -286,7 +295,7 @@ public class DBController {
 			preparedStatement.executeUpdate();
 
 			// 登録完了メッセージを出力
-			System.out.println("社員情報を登録しました");
+			System.out.println(ConstantMsg.MSG_INSERT_COMPLETE);
 		} finally {
 			DBManager.close(preparedStatement);
 			DBManager.close(connection);
@@ -315,23 +324,24 @@ public class DBController {
 			// ステートメントの作成
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_UPDATE);
 
-			System.out.print("社員名：");
-			String emp_name = br.readLine();
+			System.out.print(ConstantMsg.GUIDE_EMPID);
+			String empName = br.readLine();
 			// 性別を入力
-			System.out.print("性別(0:回答しない, 1:男性, 2:女性, 9:その他):");
+			System.out.print(ConstantMsg.GUIDE_GENDER);
 			String gender = br.readLine();
 			// 誕生日を入力
-			System.out.print("生年月日(西暦年/月/日)：");
+			System.out.print(ConstantMsg.GUIDE_BIRTHDAY);
 			String birthday = br.readLine();
 
 			// 部署IDを入力
-			System.out.print("部署ID(1：営業部、2：経理部、3：総務部)：");
+			System.out.print(ConstantMsg.GUIDE_DEPTID);
 			String deptId = br.readLine();
 
 			// 入力値をバインド
-			preparedStatement.setString(1, emp_name);
+			preparedStatement.setString(1, empName);
 			preparedStatement.setInt(2, Integer.parseInt(gender));
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			SimpleDateFormat sdf = new SimpleDateFormat(
+					ConstantMsg.FORMAT_DATE);
 			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
 			preparedStatement.setInt(4, Integer.parseInt(deptId));
 			preparedStatement.setInt(5, Integer.parseInt(empId));
@@ -373,7 +383,7 @@ public class DBController {
 			// SQL文の実行(失敗時は戻り値0)
 			preparedStatement.executeUpdate();
 
-			System.out.println("社員情報を削除しました");
+			System.out.println(ConstantMsg.MSG_DELETE_COMPLETE);
 
 		} catch (Exception e) {
 			e.printStackTrace();
