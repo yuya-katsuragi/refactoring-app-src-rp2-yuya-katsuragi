@@ -29,11 +29,11 @@ public class MainSystem {
 			throws IOException, ClassNotFoundException, SQLException, ParseException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int menuNo = 0;
+		int menuNo = ConstantMsg.MENU_TITLE;
 
 		do {
 			// メニューの表示
-			System.out.println(ConstantMsg.MENU_TITLE);
+			System.out.println(ConstantMsg.MENU_BY_TITLE);
 			System.out.println(ConstantMsg.MENU_ALL);
 			System.out.println(ConstantMsg.MENU_BY_EMPID);
 			System.out.println(ConstantMsg.MENU_BY_DEPTID);
@@ -59,7 +59,7 @@ public class MainSystem {
 				System.out.print(ConstantMsg.GUIDE_EMPID);
 
 				// 検索機能の呼出
-				DBController.findByEmployeeName();
+				DBController.findByEmpName();
 				break;
 
 			case ConstantMsg.MENU_DEPTID_SEARCH:
