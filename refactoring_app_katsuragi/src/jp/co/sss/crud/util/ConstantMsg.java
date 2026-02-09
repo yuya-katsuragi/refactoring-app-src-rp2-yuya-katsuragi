@@ -2,25 +2,6 @@ package jp.co.sss.crud.util;
 
 public class ConstantMsg {
 
-	//メニュー番号
-	public static final int MENU_TITLE = 0;
-	public static final int MENU_ALL_SEARCH = 1;
-	public static final int MENU_EMPID_SEARCH = 2;
-	public static final int MENU_DEPTID_SEARCH = 3;
-	public static final int MENU_INSERT = 4;
-	public static final int MENU_UPDATE = 5;
-	public static final int MENU_DELETE = 6;
-	public static final int MENU_EXIT = 7;
-
-	public static final int GENDER_OTHER = 0;
-	public static final int GENDER_MALE = 1;
-	public static final int GENDER_FEMALE = 2;
-	public static final int GENDER_UNKNOWN = 9;
-
-	public static final int DEPT_SALES = 1;
-	public static final int DEPT_ACCOUNTING = 2;
-	public static final int DEPT_GENERAL_AFFAIRS = 3;
-
 	// メニューの表示
 	public static final String MENU_BY_TITLE = "=== 社員管理システム ===";
 	public static final String MENU_ALL = "1.全件表示";
@@ -46,9 +27,9 @@ public class ConstantMsg {
 	public static final String GUIDE_BIRTHDAY = "生年月日(西暦年/月/日):";
 	public static final String GUIDE_DEPTID = "部署ID(1:営業部、2:経理部、3:総務部):";
 
-	public static final String MSG_UPDATE_DEPTID = "更新する社員の社員IDを入力してください：";
+	public static final String MSG_UPDATE_EMPID = "更新する社員の社員IDを入力してください：";
 
-	public static final String MSG_DELETE_DEPTID = "削除する社員の社員IDを入力してください：";
+	public static final String MSG_DELETE_EMPID = "削除する社員の社員IDを入力してください：";
 
 	public static final String MSG_SYSTEM_EXIT = "システムを終了します。";
 
@@ -69,6 +50,15 @@ public class ConstantMsg {
 	public static final String MSG_DEPT_GENERAL_AFFAIRS = "総務部";
 
 	public static final String FORMAT_DATE = "yyyy/MM/dd";
+
+	public static final String SYSTEM_ERROR_MSG = "エラーが発生しました。";
+
+	public static final String MSG_TARGET_FOUND = "対象者がいませんでした";
+
+	public static final int GENDER_MALE = 1;
+	public static final int GENDER_FEMALE = 2;
+	public static final int GENDER_OTHER = 3;
+	public static final int GENDER_UNKNOWN = 0;
 
 	{
 
