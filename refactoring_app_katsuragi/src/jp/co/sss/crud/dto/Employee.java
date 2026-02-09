@@ -11,6 +11,13 @@ public class Employee {
 	private Department department;
 
 	/**
+	 * デフォルトコンストラクタ
+	 * 
+	 */
+	public Employee() {
+	}
+
+	/**
 	 * @param empId
 	 * @param empName
 	 * @param gender
@@ -89,6 +96,9 @@ public class Employee {
 	}
 
 	/**
+	 * 社員データを文字列にする
+	 * @return 社員データの文字列
+	 *
 	 * @param department セットする department
 	 */
 	public void setDepartment(Department department) {
@@ -110,6 +120,15 @@ public class Employee {
 
 		return empId + "\t" + empName + "\t" + gender_ja + "\t" + birthday
 				+ "\t" + department.getDeptName();
+	}
+
+	//BirthdayをString型からint型に変換するために使用
+
+	public java.sql.Date getBirthdayAsDate() {
+		if (this.birthday == null || this.birthday.isEmpty()) {
+			return null;
+		}
+		return java.sql.Date.valueOf(this.birthday.replace("/", "-"));
 	}
 
 }
