@@ -15,14 +15,13 @@ import jp.co.sss.crud.util.ConstantSQL;
 
 /**
  * 社員情報管理DAOクラス
- * データベースへの接続、SQLの実行、DTOへのデータ詰め替えを担当する。
- * IEmployeeDAOインターフェースを実装し、抽象レイヤーの整備ルールに従う。
+ * データベースへの接続、SQLの実行、DTOへのデータ詰め替えを担当し
+ * IEmployeeDAOインターフェースを実装。
  */
 public class EmployeeDAO implements IEmployeeDAO {
 
 	/**
-	 * ResultSetからEmployeeオブジェクトを生成する共通補助メソッド。
-	 * 検索系メソッドでの重複コードを排除し、保守性を高める。
+	 * ResultSetからEmployeeオブジェクトを生成する
 	 * @param resultSet 実行結果を保持するResultSet
 	 * @return Employee 部署情報（Department）を含んだ社員DTO
 	 * @throws SQLException SQL実行エラー時にスロー
@@ -43,7 +42,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 	/**
 	 * 社員情報を全件取得する。
 	 * @return List<Employee> 全社員のリスト
-	 * @throws SystemErrorException 接続失敗等の致命的エラー時に独自例外としてスロー
+	 * @throws SystemErrorException 接続失敗等エラー時に独自例外としてスロー
 	 */
 	@Override
 	public List<Employee> findAll() throws SystemErrorException {
@@ -122,7 +121,6 @@ public class EmployeeDAO implements IEmployeeDAO {
 	}
 
 	/**
-	 * 社員情報を新規登録する。社員IDはDB側で自動採番（SERIAL/AUTO_INCREMENT）される想定。
 	 * @param employee 登録する社員情報
 	 * @throws SystemErrorException システムエラー時にスロー
 	 */
@@ -143,7 +141,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 	/**
 	 * 社員情報を更新する。
 	 * @param employee 更新する社員情報
-	 * @return Integer 更新された行数（1なら成功、0なら対象なし）
+	 * @return Integer 更新された行数
 	 * @throws SystemErrorException システムエラー時にスロー
 	 */
 	@Override
@@ -165,7 +163,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 	/**
 	 * 社員情報を削除する。
 	 * @param empId 削除対象の社員ID
-	 * @return Integer 削除された行数（1なら成功、0なら対象なし）
+	 * @return Integer 削除された行数
 	 * @throws SystemErrorException システムエラー時にスロー
 	 */
 	@Override
