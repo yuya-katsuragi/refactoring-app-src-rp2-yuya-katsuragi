@@ -1,13 +1,19 @@
 package jp.co.sss.crud.service;
 
-import jp.co.sss.crud.exception.IllegalInputException;
-import jp.co.sss.crud.exception.SystemErrorException;
+import java.util.List;
 
-public class EmployeeAllFindService implements IEmployeeService {
+import jp.co.sss.crud.db.EmployeeDAO;
+import jp.co.sss.crud.dto.Employee;
+import jp.co.sss.crud.io.ConsoleWriter;
 
-	@Override
+public class EmployeeAllFindService {
 
-	public void execute() throws SystemErrorException, IllegalInputException {
+	public void execute() throws Exception {
+
+		EmployeeDAO employeeDAO = new EmployeeDAO();
+		List<Employee> employees = employeeDAO.findAll();
+
+		ConsoleWriter.showEmployees(employees);
 
 	}
 

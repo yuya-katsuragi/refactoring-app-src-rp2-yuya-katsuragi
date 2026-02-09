@@ -41,12 +41,13 @@ public class ConstantSQL {
 	// ***** SQL文 *****
 
 	/** 全件表示 */
-	public static final String SQL_ALL_SELECT = "SELECT e.emp_id, e.emp_name,e.gender, TO_CHAR(birthday, 'yyyy/MM/dd') AS birthday, e.birthday, d.dept_name "
+	public static final String SQL_ALL_SELECT = "SELECT e.emp_id, e.emp_name, e.gender, e.birthday, d.dept_id, d.dept_name "
 			+ "FROM employee e INNER JOIN department d "
-			+ "ON e.dept_id = d.dept_id " + "ORDER BY e.emp_id";
+			+ "ON e.dept_id = d.dept_id "
+			+ "ORDER BY e.emp_id";
 
 	/** 条件検索(ベース) */
-	public static final String SQL_SELECT_BASIC = "SELECT e.emp_id, e.emp_name,e.gender, TO_CHAR(birthday, 'yyyy/MM/dd') AS birthday, e.birthday, d.dept_name, d.dept_id "
+	public static final String SQL_SELECT_BASIC = "SELECT e.emp_id, e.emp_name, e.gender, e.birthday, d.dept_id, d.dept_name "
 			+ "FROM employee e INNER JOIN department d "
 			+ "ON e.dept_id = d.dept_id ";
 
